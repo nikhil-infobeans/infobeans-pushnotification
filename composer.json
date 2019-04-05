@@ -1,5 +1,5 @@
 {
-    "name": "infobeans/magento2-pushnotification",
+    "name": "nikhil-infobeans/magento2-pushnotification",
     "description": "Desktop PushNotification Module",
     "require": {
         "php": "~5.5.0|~5.6.0|~7.0.0"
