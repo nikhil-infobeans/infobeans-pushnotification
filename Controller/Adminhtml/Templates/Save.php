@@ -87,12 +87,12 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
 
             try {
                 $model->save();
-                $this->messageManager->addSuccessMessage(__('Notification added successfully.'));
+                $this->messageManager->addSuccessMessage(__('Notification template added successfully.'));
                 return $this->processResultRedirect($model, $resultRedirect, $data);
             } catch (LocalizedException $e) {
                 $this->messageManager->addExceptionMessage($e->getPrevious() ?: $e);
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the notification.'));
+                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the notification template.'));
             }
 
             $this->dataPersistor->set('notify_customer', $data);

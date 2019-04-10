@@ -141,6 +141,10 @@
                     <argument name="data" xsi:type="array">
                         <item name="urlPath" xsi:type="string">pushnotification/manageusers/selectnotification</item>
                         <item name="paramName" xsi:type="string">notificationtemplate</item>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Send Notification</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure to use selected template to sent the notification?</item>
+                        </item>
                     </argument>
                 </argument>
             </action>

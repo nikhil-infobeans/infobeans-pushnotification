@@ -91,11 +91,8 @@ class Edit extends \Magento\Backend\App\Action implements HttpGetActionInterface
         // 5. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->_initAction();
-        $resultPage->addBreadcrumb(
-            $id ? __('Edit Template') : __('Create Template'),
-            $id ? __('Edit Template') : __('Create Template')
-        );
-        $resultPage->getConfig()->getTitle()->prepend(__('Push'));
+        
+        $resultPage->getConfig()->getTitle()->prepend(__('Push Notification'));
         $resultPage->getConfig()->getTitle()
             ->prepend($model->getId() ? $model->getTitle() : __('Create Template'));
 
