@@ -25,7 +25,10 @@
             <!-- create group for fields in section -->
             <group id="general" translate="label" type="text" delault="1" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
-                <!-- create text type field -->
+                <field id="status" translate="label comment" sortOrder="1" type="select" showInDefault="1" >
+                    <label>Status</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
                 <field id="server_key" translate="Server Key" sortOrder="7" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Server Key</label>
                 </field>

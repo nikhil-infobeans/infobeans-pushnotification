@@ -31,6 +31,7 @@ class Selectnotification extends \Magento\Backend\App\Action
      * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
      */
     protected $collectionFactory;
+    
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -56,6 +57,15 @@ class Selectnotification extends \Magento\Backend\App\Action
      */
     public function execute()
     {
+        $moduleStatus = $this->notifyhelper->getModuleStatus();
+        
+        if(!$moduleStatus) {
+            $this->messageManager->addError(__("Please enable the module"));
+            $resultRedirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
+            $resultRedirect->setPath('*/*/index');
+            return $resultRedirect;
+        }
+        
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         $templateId = $this->getRequest()->getParam('notificationtemplate');
 

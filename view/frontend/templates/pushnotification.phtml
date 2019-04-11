@@ -2,6 +2,8 @@
 $helper = $this->helper('Infobeans\PushNotification\Helper\Data');
 $serverKey = !empty($helper->getServerKey()) ? $helper->getServerKey() : '';
 $senderId = !empty($helper->getSenderId()) ? $helper->getSenderId(): '';
+$moduleStatus = $helper->getModuleStatus();
+if($moduleStatus) {
 ?>
 <script type="text/x-magento-init">
         {
@@ -13,3 +15,4 @@ $senderId = !empty($helper->getSenderId()) ? $helper->getSenderId(): '';
             }
         }
 </script>
+<?php } ?>

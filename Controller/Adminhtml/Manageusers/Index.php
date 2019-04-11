@@ -53,6 +53,7 @@ class Index extends \Magento\Backend\App\Action implements HttpGetActionInterfac
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
+        $resultPage->setActiveMenu('Infobeans_PushNotification::templates');
         $resultPage->getConfig()->getTitle()->prepend(__("Registered Users"));
         return $resultPage;
     }

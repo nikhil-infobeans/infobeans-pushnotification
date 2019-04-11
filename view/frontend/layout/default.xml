@@ -24,7 +24,4 @@
             </block>
         </referenceContainer>
     </body>
-    <footer>
-        <script src="Infobeans_PushNotification::js/serviceworker.js" />
-    </footer>>    
 </page>

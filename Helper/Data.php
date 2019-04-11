@@ -24,6 +24,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     const XML_PATH_PUSH_NOTIFICATION_SERVER_KEY = 'push_notification/general/server_key';
     const XML_PATH_PUSH_NOTIFICATION_SENDER_ID = 'push_notification/general/server_id';
+    const XML_PATH_PUSH_NOTIFICATION_STATUS = 'push_notification/general/status';
     
     // @codingStandardsIgnoreStart
     /**
@@ -134,6 +135,19 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
     }
     
     /**
+     * Get sender id from configuration
+     * @return string
+     */
+    public function getModuleStatus()
+    {
+        $serverKey = $this->scopeConfig->getValue(
+            self::XML_PATH_PUSH_NOTIFICATION_STATUS,
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
+        return $serverKey;
+    }
+    
+    /**
      * Get template details
      * @param type $templateId
      * @return type
@@ -169,7 +183,7 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $params['registration_ids'] = [$token];
         $logoUrl = $this->getMediaUrl().$getTemplateData->getLogo();
         $params['data'] = ['title' => $getTemplateData->getTitle(), 'body' => $getTemplateData->getMessage(), 
-                           'icon' => $logoUrl, 'url' => $getTemplateData->getRedirectUrl()];
+                           'icon' => $logoUrl, 'click_action' => $getTemplateData->getRedirectUrl()];
         $this->curl->post($url, json_encode($params));
         $result = json_decode($this->curl->getBody());
         return $result;

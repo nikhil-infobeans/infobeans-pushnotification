@@ -33,7 +33,6 @@ class Uninstall implements UninstallInterface
     const REGISTERED_USERS_TABLE_NAME = 'notification_users';
 
     /**
-     * Invoked when remove-data flag is set during module uninstall
      *
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
