@@ -15,8 +15,6 @@
 
 namespace Infobeans\PushNotification\Ui\Component\Listing\Column;
 
-use Infobeans\NotifyCustomer\Block\Adminhtml\Grid\Renderer\Action\UrlBuilder;
-use Magento\Framework\App\ObjectManager;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
@@ -29,16 +27,6 @@ class TemplateActions extends Column
     const URL_PATH_DELETE = 'pushnotification/templates/delete';
 
     /**
-     * @var \Magento\Cms\Block\Adminhtml\Page\Grid\Renderer\Action\UrlBuilder
-     */
-    protected $actionUrlBuilder;
-
-    /**
-     * @var \Magento\Framework\UrlInterface
-     */
-    protected $urlBuilder;
-
-    /**
      * @var string
      */
     private $editUrl;
@@ -46,7 +34,6 @@ class TemplateActions extends Column
     /**
      * @param ContextInterface $context
      * @param UiComponentFactory $uiComponentFactory
-     * @param UrlBuilder $actionUrlBuilder
      * @param UrlInterface $urlBuilder
      * @param array $components
      * @param array $data
@@ -55,14 +42,12 @@ class TemplateActions extends Column
     public function __construct(
         ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        UrlBuilder $actionUrlBuilder,
         UrlInterface $urlBuilder,
         array $components = [],
         array $data = [],
         $editUrl = self::URL_PATH_EDIT
     ) {
         $this->urlBuilder = $urlBuilder;
-        $this->actionUrlBuilder = $actionUrlBuilder;
         $this->editUrl = $editUrl;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
