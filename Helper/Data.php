@@ -182,8 +182,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         $url = "https://fcm.googleapis.com/fcm/send";
         $params['registration_ids'] = [$token];
         $logoUrl = $this->getMediaUrl().$getTemplateData->getLogo();
+        $redirectUrl = ($getTemplateData->getRedirectUrl() != '') ? $getTemplateData->getRedirectUrl() : '/';
         $params['data'] = ['title' => $getTemplateData->getTitle(), 'body' => $getTemplateData->getMessage(), 
-                           'icon' => $logoUrl, 'click_action' => $getTemplateData->getRedirectUrl()];
+                           'icon' => $logoUrl, 'click_action' => $redirectUrl];
         $this->curl->post($url, json_encode($params));
         $result = json_decode($this->curl->getBody());
         return $result;

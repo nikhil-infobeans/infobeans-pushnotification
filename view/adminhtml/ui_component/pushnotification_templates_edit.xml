@@ -90,7 +90,6 @@
                     <item name="dataScope" xsi:type="string">redirect_url</item>
                     <item name="required" xsi:type="boolean">true</item>
                     <item name="validation" xsi:type="array">
-                        <item name="required-entry" xsi:type="boolean">true</item>
                         <item name="validate-url" xsi:type="boolean">true</item>
                     </item>
                 </item>

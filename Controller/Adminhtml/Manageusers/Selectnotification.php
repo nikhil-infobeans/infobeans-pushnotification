@@ -28,7 +28,7 @@ class Selectnotification extends \Magento\Backend\App\Action
     protected $filter;
 
     /**
-     * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
+     * @var \Infobeans\PushNotification\Model\ResourceModel\Users\CollectionFactory
      */
     protected $collectionFactory;
     

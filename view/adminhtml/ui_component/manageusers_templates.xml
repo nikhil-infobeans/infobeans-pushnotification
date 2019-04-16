@@ -19,6 +19,14 @@
             <item name="deps" xsi:type="string">manageusers_templates.manageusers_templates_data_source</item>
         </item>
         <item name="spinner" xsi:type="string">manageusers_templates_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="sendnotification" xsi:type="array">
+                <item name="name" xsi:type="string">sendnotification</item>
+                <item name="label" xsi:type="string" translate="true">Send Notification</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/sendnotification/</item>
+            </item>
+        </item>
     </argument>
     <dataSource name="manageusers_templates_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
