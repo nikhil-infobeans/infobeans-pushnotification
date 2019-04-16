@@ -52,6 +52,7 @@ class Options implements OptionSourceInterface
      */
     protected function getTemplateTree()
     {
+        $templateById = [];
         if ($this->templateTree === null) {
             $collection = $this->templateCollectionFactory->create();
  
