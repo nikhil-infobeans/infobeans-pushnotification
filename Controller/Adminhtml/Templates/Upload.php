@@ -33,11 +33,6 @@ class Upload extends \Magento\Backend\App\Action
         $this->imageUploader = $imageUploader;
     }
 
-    public function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Infobeans_PushNotification::save');
-    }
-
     public function execute()
     {
         try {

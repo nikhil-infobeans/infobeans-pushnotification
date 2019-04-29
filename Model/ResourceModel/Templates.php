@@ -17,6 +17,7 @@ namespace Infobeans\PushNotification\Model\ResourceModel;
 
 class Templates extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
+    // @codingStandardsIgnoreStart
     /**
      * @var string
      */
@@ -35,6 +36,7 @@ class Templates extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     ) {
         parent::__construct($context, $resourcePrefix);
     }
+    
     /**
      * Initialize resource model.
      */
@@ -42,4 +44,5 @@ class Templates extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init('notification_templates', 'id');
     }
+    // @codingStandardsIgnoreEnd
 }

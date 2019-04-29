@@ -25,6 +25,7 @@ use Infobeans\PushNotification\Model\ResourceModel\Users\CollectionFactory;
  */
 class MassDelete extends \Magento\Backend\App\Action
 {
+    //@codingStandardsIgnoreStart
     /**
      * @var Filter
      */
@@ -39,7 +40,8 @@ class MassDelete extends \Magento\Backend\App\Action
      * @var \Infobeans\PushNotification\Helper $notifyhelper
      */
     protected $notifyhelper;
-
+    //@codingStandardsIgnoreEnd
+    
     /**
      * @param Context $context
      * @param Filter $filter
@@ -47,10 +49,10 @@ class MassDelete extends \Magento\Backend\App\Action
      * @param \Infobeans\PushNotification\Helper\Data $notifyhelper
      */
     public function __construct(
-        Context $context, 
+        Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-        \Infobeans\PushNotification\Helper\Data $notifyhelper 
+        \Infobeans\PushNotification\Helper\Data $notifyhelper
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
@@ -68,11 +70,11 @@ class MassDelete extends \Magento\Backend\App\Action
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         $collectionSize = $collection->getSize();
-
+        //@codingStandardsIgnoreStart
         foreach ($collection as $user) {
                 $user->delete();
         }
-
+        //@codingStandardsIgnoreEnd
         $this->messageManager->addSuccessMessage(__('A total of %1 user(s) have been deleted.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */

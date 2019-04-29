@@ -19,6 +19,7 @@ use Magento\Framework\Model\AbstractModel;
 
 class Templates extends AbstractModel
 {
+    // @codingStandardsIgnoreStart
     /**
      * Initialize resource model
      *
@@ -28,4 +29,5 @@ class Templates extends AbstractModel
     {
         $this->_init(\Infobeans\PushNotification\Model\ResourceModel\Templates::class);
     }
+    // @codingStandardsIgnoreEnd
 }

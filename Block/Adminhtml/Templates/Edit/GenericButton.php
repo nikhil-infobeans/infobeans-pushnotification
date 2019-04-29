@@ -23,6 +23,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
  */
 class GenericButton
 {
+    // @codingStandardsIgnoreStart
     /**
      * @var Context
      */
@@ -32,7 +33,8 @@ class GenericButton
      * @var BlockRepositoryInterface
      */
     protected $blockRepository;
-
+    // @codingStandardsIgnoreEnd
+    
     /**
      * @param Context $context
      * @param BlockRepositoryInterface $blockRepository
@@ -57,6 +59,7 @@ class GenericButton
                 $this->context->getRequest()->getParam('block_id')
             )->getId();
         } catch (NoSuchEntityException $e) {
+            return null;
         }
         return null;
     }

@@ -20,8 +20,9 @@ use Magento\Framework\App\Action\HttpPostActionInterface as HttpPostActionInterf
 use Magento\Backend\App\Action;
 use Magento\Framework\Exception\LocalizedException;
 
-class Save extends \Magento\Backend\App\Action implements HttpPostActionInterface {
-
+class Save extends \Magento\Backend\App\Action implements HttpPostActionInterface
+{
+    //@codingStandardsIgnoreStart
     /**
      * @var \Infobeans\PushNotification\Helper $notifyhelper
      */
@@ -31,16 +32,26 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
      * @var \Infobeans\PushNotification\Model\ResourceModel\Users\CollectionFactory
      */
     protected $collectionFactory;
-
+    
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone
+     */
+    protected  $timezone;
+    // @codingStandardsIgnoreEnd
+    
     /**
      * @param Action\Context $context
      * @param \Infobeans\PushNotification\Helper\Data $notifyhelper
      */
     public function __construct(
-    Action\Context $context, \Infobeans\PushNotification\Helper\Data $notifyhelper, \Infobeans\PushNotification\Model\ResourceModel\Users\CollectionFactory $collectionFactory
+        Action\Context $context,
+        \Infobeans\PushNotification\Helper\Data $notifyhelper,
+        \Infobeans\PushNotification\Model\ResourceModel\Users\CollectionFactory $collectionFactory,
+        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $timezone
     ) {
         $this->notifyhelper = $notifyhelper;
         $this->collectionFactory = $collectionFactory;
+        $this->timezone = $timezone;
         parent::__construct($context);
     }
 
@@ -50,7 +61,8 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @return \Magento\Framework\Controller\ResultInterface
      */
-    public function execute() {
+    public function execute()
+    {
         
         $resultRedirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
         $moduleStatus = $this->notifyhelper->getModuleStatus();
@@ -87,7 +99,6 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
             $resultRedirect->setPath('*/*/index');
         }
 
-
         $notificationSent = 0;
         foreach ($users->getAllIds() as $user) {
             $response = $this->notifyhelper->processNotification($user, $templateId);
@@ -102,22 +113,19 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
         return $resultRedirect;
     }
 
-    public function validateDate($formData = []) {
-
+    private function validateDate($formData = [])
+    {
         $result = [];
         $fromDate = $formData['from_date'];
         $toDate = $formData['to_date'];
         if ($fromDate && $toDate) {
-
-            $fromDate = new \DateTime($fromDate);
-            $toDate = new \DateTime($toDate);
+            $fromDate = $this->timezone->date($fromDate);
+            $toDate = $this->timezone->date($toDate);
 
             if ($fromDate > $toDate) {
                 $result[] = __('End Date must follow Start Date.');
             }
         }
-
         return !empty($result) ? $result : true;
     }
-
 }

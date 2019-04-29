@@ -21,6 +21,7 @@ use Infobeans\PushNotification\Model\ResourceModel\Templates\Collection as Templ
 
 class Collection extends TemplatesCollection implements SearchResultInterface
 {
+    // @codingStandardsIgnoreStart
     /**
      * @var AggregationInterface
      */
@@ -140,4 +141,5 @@ class Collection extends TemplatesCollection implements SearchResultInterface
     {
         return $this;
     }
+    // @codingStandardsIgnoreEnd
 }

@@ -27,7 +27,7 @@ class ImageUploader
     public $allowedExtensions;
 
     /**
-     * 
+     *
      * @param \Magento\MediaStorage\Helper\File\Storage\Database $coreFileStorageDatabase
      * @param \Magento\Framework\Filesystem $filesystem
      * @param \Magento\MediaStorage\Model\File\UploaderFactory $uploaderFactory
@@ -42,7 +42,7 @@ class ImageUploader
         \Psr\Log\LoggerInterface $logger
     ) {
         $this->coreFileStorageDatabase = $coreFileStorageDatabase;
-        $this->mediaDirectory = $filesystem->getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
+        $this->filesystem = $filesystem;
         $this->uploaderFactory = $uploaderFactory;
         $this->storeManager = $storeManager;
         $this->logger = $logger;
@@ -52,7 +52,19 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
+     * @return type Object
+     */
+    private function mediaDirectory()
+    {
+        if ($this->mediaDirectory === null) {
+            $this->mediaDirectory = $this->filesystem->
+                                    getDirectoryWrite(\Magento\Framework\App\Filesystem\DirectoryList::MEDIA);
+        }
+        return $this->mediaDirectory;
+    }
+    /**
+     *
      * @param type $baseTmpPath
      */
     public function setBaseTmpPath($baseTmpPath)
@@ -61,7 +73,7 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
      * @param type $basePath
      */
     public function setBasePath($basePath)
@@ -70,7 +82,7 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
      * @param type $allowedExtensions
      */
     public function setAllowedExtensions($allowedExtensions)
@@ -79,7 +91,7 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
      * @return type string
      */
     public function getBaseTmpPath()
@@ -88,7 +100,7 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
      * @return type string
      */
     public function getBasePath()
@@ -97,7 +109,7 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
      * @return type array
      */
     public function getAllowedExtensions()
@@ -106,7 +118,7 @@ class ImageUploader
     }
 
     /**
-     * 
+     *
      * @param type $path
      * @param type $imageName
      * @return type string
@@ -133,7 +145,7 @@ class ImageUploader
                 $baseTmpImagePath,
                 $baseImagePath
             );
-            $this->mediaDirectory->renameFile(
+            $this->mediaDirectory()->renameFile(
                 $baseTmpImagePath,
                 $baseImagePath
             );
@@ -158,8 +170,8 @@ class ImageUploader
         $uploader = $this->uploaderFactory->create(['fileId' => $fileId]);
         $uploader->setAllowedExtensions($this->getAllowedExtensions());
         $uploader->setAllowRenameFiles(true);
-        $imageName = "push_icon_".time().".".pathinfo($fileName, PATHINFO_EXTENSION);
-        $result = $uploader->save($this->mediaDirectory->getAbsolutePath($baseTmpPath), $imageName);
+        $imageName = "push_icon_".time().".".$uploader->getFileExtension($fileName);
+        $result = $uploader->save($this->mediaDirectory()->getAbsolutePath($baseTmpPath), $imageName);
         if (!$result) {
             throw new \Magento\Framework\Exception\LocalizedException(
                 __('File can not be saved to the destination folder.')

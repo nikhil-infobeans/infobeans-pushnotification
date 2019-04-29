@@ -5,7 +5,7 @@
  * @category   Infobeans
  * @package    PushNotification
  * @version    1.0.0
- * @description Saved token 
+ * @description Saved token
  *
  * Release with version 1.0.0
  *
@@ -15,9 +15,9 @@
 
 namespace Infobeans\PushNotification\Controller\ValidateToken;
 
-
 class Index extends \Magento\Framework\App\Action\Action
 {
+    //@codingStandardsIgnoreStart
     /**
      * @var \Magento\Framework\Controller\Result\JsonFactory
      */
@@ -47,20 +47,19 @@ class Index extends \Magento\Framework\App\Action\Action
     {
         $jsonResult = $this->resultJsonFactory->create();
         $reponseArray = ["success" => false];
-        if($this->getRequest()->isXmlHttpRequest()) {
+        if ($this->getRequest()->isXmlHttpRequest()) {
             $token = $this->getRequest()->getParam("token");
             $broserType = $this->getRequest()->getParam("broserType");
             $userModel = $this->userFactory->create();
-            $userData = $userModel->load($token, 'token'); 
+            $userData = $userModel->load($token, 'token');
             
-           if(empty($userData->getData())){
+            if (empty($userData->getData())) {
                 $userModel->setToken($token);
                 $userModel->setSubscribedFrom($broserType);
                 $userModel->save();
                 $reponseArray = ["success" => true, 'message' => "Token saved successfully."];
             }
-        }
-        else{
+        } else {
             $reponseArray['message'] = "Invalid request";
         }
         return $jsonResult->setData($reponseArray);

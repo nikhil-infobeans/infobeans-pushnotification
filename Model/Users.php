@@ -19,6 +19,7 @@ use Magento\Framework\Model\AbstractModel;
 
 class Users extends AbstractModel
 {
+    // @codingStandardsIgnoreStart
     /**
      * Initialize resource model
      *
@@ -28,4 +29,5 @@ class Users extends AbstractModel
     {
         $this->_init(\Infobeans\PushNotification\Model\ResourceModel\Users::class);
     }
+    // @codingStandardsIgnoreEnd
 }

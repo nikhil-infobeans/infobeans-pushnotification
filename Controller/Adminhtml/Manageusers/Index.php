@@ -21,6 +21,7 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
+    //@codingStandardsIgnoreStart
     /**
      * Authorization level of a basic admin session
      *
@@ -32,7 +33,8 @@ class Index extends \Magento\Backend\App\Action implements HttpGetActionInterfac
      * @var ResultFactory
      */
     protected $resultPageFactory;
-
+    //@codingStandardsIgnoreEnd
+    
     /**
      * @param Context $context
      * @param ResultFactory $resultPageFactory

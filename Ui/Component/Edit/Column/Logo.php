@@ -23,11 +23,13 @@ use Magento\Ui\Component\Listing\Columns\Column;
 
 class Logo extends Column
 {
+    //@codingStandardsIgnoreStart
     /**
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
     protected $storeManager;
+    //@codingStandardsIgnoreStart
     
     /**
      *

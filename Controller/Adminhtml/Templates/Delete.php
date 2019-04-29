@@ -16,9 +16,11 @@
 namespace Infobeans\PushNotification\Controller\Adminhtml\Templates;
 
 use Magento\Backend\App\Action;
+use \Infobeans\PushNotification\Model\Templates;
 
 class Delete extends \Magento\Backend\App\Action
 {
+    //@codingStandardsIgnoreStart
     /**
      * Authorization level of a basic admin session
      *
@@ -31,6 +33,11 @@ class Delete extends \Magento\Backend\App\Action
      */
     protected $notifyhelper;
     
+    /**
+     * @var \Infobeans\PushNotification\Model\Templates $template
+     */
+    protected $template;
+    //@codingStandardsIgnoreEnd
     
     /**
      * @param Action\Context $context
@@ -38,9 +45,11 @@ class Delete extends \Magento\Backend\App\Action
      */
     public function __construct(
         Action\Context $context,
-        \Infobeans\PushNotification\Helper\Data $notifyhelper
+        \Infobeans\PushNotification\Helper\Data $notifyhelper,
+        \Infobeans\PushNotification\Model\Templates $template
     ) {
         $this->notifyhelper = $notifyhelper;
+        $this->template = $template;
         parent::__construct($context);
     }
     
@@ -60,12 +69,12 @@ class Delete extends \Magento\Backend\App\Action
             $title = "";
             try {
                 // init model and delete
-                $model = $this->_objectManager->create(\Infobeans\PushNotification\Model\Templates::class);
+                $model = $this->template->create();
                 $model->load($id);
                 
                 $title = $model->getTitle();
-                if($model->delete()) {
-                    $this->notifyhelper->removeLogo($model->getLogo()); 
+                if ($model->delete()) {
+                    $this->notifyhelper->removeLogo($model->getLogo());
                 }
                 
                 // display success message

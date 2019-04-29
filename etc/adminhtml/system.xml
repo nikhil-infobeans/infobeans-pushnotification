@@ -23,7 +23,7 @@
             <tab>infobeans_modules</tab>
             <resource>Infobeans_PushNotification::config_pushnotification</resource>
             <!-- create group for fields in section -->
-            <group id="general" translate="label" type="text" delault="1" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="general" translate="label" type="text" default="1" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <field id="status" translate="label comment" sortOrder="1" type="select" showInDefault="1" >
                     <label>Status</label>

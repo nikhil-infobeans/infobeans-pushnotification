@@ -16,7 +16,6 @@
 namespace Infobeans\PushNotification\Setup;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\Db\Select;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\UninstallInterface as UninstallInterface;
@@ -32,6 +31,7 @@ class Uninstall implements UninstallInterface
     const TEMPLATE_TABLE_NAME = 'notification_templates';
     const REGISTERED_USERS_TABLE_NAME = 'notification_users';
 
+    // @codingStandardsIgnoreStart
     /**
      *
      * @param SchemaSetupInterface $setup
@@ -41,6 +41,7 @@ class Uninstall implements UninstallInterface
      */
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
+    // @codingStandardsIgnoreEnd
         $installer = $setup;
         $installer->startSetup();
 

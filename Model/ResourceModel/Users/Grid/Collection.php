@@ -21,6 +21,7 @@ use Infobeans\PushNotification\Model\ResourceModel\Users\Collection as UsersColl
 
 class Collection extends UsersCollection implements SearchResultInterface
 {
+    // @codingStandardsIgnoreStart
     /**
      * @var AggregationInterface
      */
@@ -140,4 +141,5 @@ class Collection extends UsersCollection implements SearchResultInterface
     {
         return $this;
     }
+    // @codingStandardsIgnoreEnd
 }

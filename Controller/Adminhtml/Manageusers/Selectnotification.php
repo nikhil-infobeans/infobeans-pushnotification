@@ -17,6 +17,7 @@ namespace Infobeans\PushNotification\Controller\Adminhtml\Manageusers;
 
 class Selectnotification extends \Magento\Backend\App\Action
 {
+    //@codingStandardsIgnoreStart
     /**
      * @var \Infobeans\PushNotification\Helper $notifyhelper
      */
@@ -31,7 +32,7 @@ class Selectnotification extends \Magento\Backend\App\Action
      * @var \Infobeans\PushNotification\Model\ResourceModel\Users\CollectionFactory
      */
     protected $collectionFactory;
-    
+    //@codingStandardsIgnoreEnd
 
     /**
      * @param \Magento\Backend\App\Action\Context $context
@@ -59,7 +60,7 @@ class Selectnotification extends \Magento\Backend\App\Action
     {
         $moduleStatus = $this->notifyhelper->getModuleStatus();
         
-        if(!$moduleStatus) {
+        if (!$moduleStatus) {
             $this->messageManager->addError(__("Please enable the module"));
             $resultRedirect = $this->resultFactory->create(\Magento\Framework\Controller\ResultFactory::TYPE_REDIRECT);
             $resultRedirect->setPath('*/*/index');
@@ -71,7 +72,7 @@ class Selectnotification extends \Magento\Backend\App\Action
 
         $notificationSent = 0;
         foreach ($collection->getAllIds() as $user) {
-            $response = $this->notifyhelper->processNotification($user, $templateId);            
+            $response = $this->notifyhelper->processNotification($user, $templateId);
             $notificationSent++;
         }
         

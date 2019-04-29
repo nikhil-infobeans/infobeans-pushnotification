@@ -20,6 +20,7 @@ use Magento\Backend\App\Action;
 
 class Edit extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
+    //@codingStandardsIgnoreStart
     /**
      * Authorization level of a basic admin session
      *
@@ -36,7 +37,8 @@ class Edit extends \Magento\Backend\App\Action implements HttpGetActionInterface
      * @var \Infobeans\PushNotification\Model\TemplatesFactory $templateFactory
      */
     protected $templateFactory;
-
+    //@codingStandardsIgnoreEnd
+    
     /**
      * @param Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
@@ -51,6 +53,7 @@ class Edit extends \Magento\Backend\App\Action implements HttpGetActionInterface
         parent::__construct($context);
     }
 
+    //@codingStandardsIgnoreStart
     /**
      * Init actions
      *
@@ -64,9 +67,10 @@ class Edit extends \Magento\Backend\App\Action implements HttpGetActionInterface
         $resultPage->setActiveMenu('Infobeans_PushNotification::pushnotification');
         return $resultPage;
     }
-
+    //@codingStandardsIgnoreEnd
+    
     /**
-     * Edit CMS page
+     * Edit Template page
      *
      * @return \Magento\Backend\Model\View\Result\Page|\Magento\Backend\Model\View\Result\Redirect
      * @SuppressWarnings(PHPMD.NPathComplexity)

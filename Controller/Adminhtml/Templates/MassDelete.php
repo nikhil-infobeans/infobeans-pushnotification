@@ -25,6 +25,7 @@ use Infobeans\PushNotification\Model\ResourceModel\Templates\CollectionFactory;
  */
 class MassDelete extends \Magento\Backend\App\Action
 {
+    //@codingStandardsIgnoreStart
     /**
      * Authorization level of a basic admin session
      *
@@ -46,6 +47,7 @@ class MassDelete extends \Magento\Backend\App\Action
      * @var \Infobeans\PushNotification\Helper $notifyhelper
      */
     protected $notifyhelper;
+    //@codingStandardsIgnoreEnd
 
     /**
      * @param Context $context
@@ -54,10 +56,10 @@ class MassDelete extends \Magento\Backend\App\Action
      * @param \Infobeans\PushNotification\Helper\Data $notifyhelper
      */
     public function __construct(
-        Context $context, 
+        Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-        \Infobeans\PushNotification\Helper\Data $notifyhelper 
+        \Infobeans\PushNotification\Helper\Data $notifyhelper
     ) {
         $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
@@ -75,13 +77,13 @@ class MassDelete extends \Magento\Backend\App\Action
     {
         $collection = $this->filter->getCollection($this->collectionFactory->create());
         $collectionSize = $collection->getSize();
-
+        //@codingStandardsIgnoreStart
         foreach ($collection as $templates) {
-            if($templates->delete()) {
+            if ($templates->delete()) {
                 $this->notifyhelper->removeLogo($templates->getLogo());
             }
         }
-
+        //@codingStandardsIgnoreEnd
         $this->messageManager->addSuccessMessage(__('A total of %1 template(s) have been deleted.', $collectionSize));
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */

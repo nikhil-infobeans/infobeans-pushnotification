@@ -17,6 +17,7 @@ namespace Infobeans\PushNotification\Ui\Component\MassAction\Select;
 
 class NotificationTemplate implements \Zend\Stdlib\JsonSerializable
 {
+    //@codingStandardsIgnoreStart
     /**
      * @var \Infobeans\PushNotification\Model\ResourceModel\Templates\CollectionFactory
      */
@@ -55,6 +56,7 @@ class NotificationTemplate implements \Zend\Stdlib\JsonSerializable
      * @var array
      */
     protected $additionalData = [];
+    //@codingStandardsIgnoreStart
 
     /**
      * @param \Infobeans\PushNotification\Model\TemplatesFactory $templateFactory
@@ -82,7 +84,6 @@ class NotificationTemplate implements \Zend\Stdlib\JsonSerializable
             $templates = $this->templateCollectionFactory->create();
             $this->prepareData();
             foreach ($templates as $templateData) {
-                
                 $this->options[$templateData->getId()] = [
                     'type' => 'select_template' . $templateData->getId(),
                     'label' => $templateData->getTitle(),

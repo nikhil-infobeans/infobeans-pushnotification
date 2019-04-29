@@ -17,6 +17,7 @@ namespace Infobeans\PushNotification\Model\ResourceModel;
 
 class Users extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
+    // @codingStandardsIgnoreStart
     /**
      * @var string
      */
@@ -41,4 +42,5 @@ class Users extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init('notification_users', 'id');
     }
+    // @codingStandardsIgnoreEnd
 }

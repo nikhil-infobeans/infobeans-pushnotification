@@ -10,6 +10,7 @@ use Magento\Framework\App\RequestInterface;
  */
 class Options implements OptionSourceInterface
 {
+    //@codingStandardsIgnoreStart
     /**
      * @var \Infobeans\PushNotification\Model\ResourceModel\Templates\CollectionFactory
      */
@@ -24,7 +25,8 @@ class Options implements OptionSourceInterface
      * @var array
      */
     protected $templateTree;
- 
+    //@codingStandardsIgnoreEnd
+    
     /**
      * @param TemplateCollectionFactory $templateCollectionFactory
      * @param RequestInterface $request
@@ -44,7 +46,8 @@ class Options implements OptionSourceInterface
     {
         return $this->getTemplateTree();
     }
- 
+    
+    //@codingStandardsIgnoreStart
     /**
      * Retrieve categories tree
      *
@@ -69,4 +72,5 @@ class Options implements OptionSourceInterface
         }
         return $this->templateTree;
     }
+    //@codingStandardsIgnoreEnd
 }

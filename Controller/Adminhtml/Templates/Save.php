@@ -22,6 +22,7 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Save extends \Magento\Backend\App\Action implements HttpPostActionInterface
 {
+    //@codingStandardsIgnoreStart
     /**
      * Authorization level of a basic admin session
      *
@@ -44,7 +45,8 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
      */
     
     public $imageUploader;
-
+    //@codingStandardsIgnoreEnd
+    
     /**
      * @param Action\Context $context
      * @param DataPersistorInterface $dataPersistor
@@ -86,13 +88,15 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
             $model->setData($data);
 
             try {
+                $message = (isset($data['id']) && !empty($data['id'])) ? 'edited' : 'added';
                 $model->save();
-                $this->messageManager->addSuccessMessage(__('Notification template added successfully.'));
-                return $this->processResultRedirect($model, $resultRedirect, $data);
+                $this->messageManager->addSuccessMessage(__('Notification template %1 successfully.', $message));
+                return $this->processResultRedirect($resultRedirect, $data);
             } catch (LocalizedException $e) {
                 $this->messageManager->addExceptionMessage($e->getPrevious() ?: $e);
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the notification template.'));
+                $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving '
+                . 'the notification template.'));
             }
 
             $this->dataPersistor->set('notify_customer', $data);
@@ -104,13 +108,12 @@ class Save extends \Magento\Backend\App\Action implements HttpPostActionInterfac
     /**
      * Process result redirect
      *
-     * @param \Magento\Cms\Api\Data\PageInterface $model
      * @param \Magento\Backend\Model\View\Result\Redirect $resultRedirect
      * @param array $data
      * @return \Magento\Backend\Model\View\Result\Redirect
      * @throws LocalizedException
      */
-    private function processResultRedirect($model, $resultRedirect, $data)
+    private function processResultRedirect($resultRedirect, $data)
     {
         if ($this->getRequest()->getParam('back', false) === 'duplicate') {
             $newPage = $this->notifyFactory->create(['data' => $data]);

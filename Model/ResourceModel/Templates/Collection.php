@@ -17,16 +17,17 @@ namespace Infobeans\PushNotification\Model\ResourceModel\Templates;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
+    // @codingStandardsIgnoreStart
     /**
      * @var string
      */
     protected $_idFieldName = 'id';
 
         /**
-     * Define resource model
-     *
-     * @return void
-     */
+         * Define resource model
+         *
+         * @return void
+         */
     protected function _construct()
     {
         $this->_init(\Infobeans\PushNotification\Model\Templates::class, \Infobeans\PushNotification\Model\ResourceModel\Templates::class);
@@ -41,5 +42,5 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
         
         return $this;
     }
-
+    // @codingStandardsIgnoreEnd
 }

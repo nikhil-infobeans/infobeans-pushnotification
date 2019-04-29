@@ -21,18 +21,13 @@ use Magento\Framework\View\Result\PageFactory;
 
 class Index extends \Magento\Backend\App\Action implements HttpGetActionInterface
 {
-    /**
-     * Authorization level of a basic admin session
-     *
-     * @see _isAllowed()
-     */
-    //const ADMIN_RESOURCE = 'Infobeans_PushNotification::manageusers';
-
+    //@codingStandardsIgnoreStart
     /**
      * @var ResultFactory
      */
     protected $resultPageFactory;
-
+    // @codingStandardsIgnoreEnd
+    
     /**
      * @param Context $context
      * @param ResultFactory $resultPageFactory

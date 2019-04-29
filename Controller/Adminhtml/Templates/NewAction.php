@@ -17,6 +17,7 @@ namespace Infobeans\PushNotification\Controller\Adminhtml\Templates;
 
 class NewAction extends \Magento\Backend\App\Action
 {
+    //@codingStandardsIgnoreStart
     /**
      * Authorization level of a basic admin session
      *
@@ -28,7 +29,8 @@ class NewAction extends \Magento\Backend\App\Action
      * @var \Magento\Backend\Model\View\Result\Forward
      */
     protected $resultForwardFactory;
-
+    //@codingStandardsIgnoreEnd
+    
     /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
